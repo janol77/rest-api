@@ -52,13 +52,11 @@ def post():
     #     return not_found("the product does not exist")
 
 # Set the route and accepted methods
-@task.route('/task/<int:key>/', methods=['DELETE'])
-def delete():
-    return jsonify({'status': 'OK',
-                    'result': 'delete method'})
-    # product = Product.query.get(productId)
-    # if product:
-    #     return jsonify({'status': 'OK',
-    #                     'result': product.serialize()})
-    # else:
-    #     return not_found("the product does not exist")
+@task.route('/task/<string:key>/', methods=['DELETE'])
+def delete(key):
+    task = Task.objects.filter(id=key).first()
+    if task:
+        task.delete()
+        return jsonify({'status': 'OK'}), 200
+    else:
+        return not_found("the task does not exist")

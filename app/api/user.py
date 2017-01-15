@@ -28,8 +28,8 @@ def get(key=None):
 
 
 # Set the route and accepted methods
-@user.route('/user/<int:key>/', methods=['PUT'])
-def put():
+@user.route('/user/<string:key>/', methods=['PUT'])
+def put(key):
     return jsonify({'status': 'OK',
                     'result': 'put method'})
     # product = Product.query.get(productId)
@@ -52,13 +52,11 @@ def post():
     #     return not_found("the product does not exist")
 
 # Set the route and accepted methods
-@user.route('/user/<int:key>/', methods=['DELETE'])
-def delete():
-    return jsonify({'status': 'OK',
-                    'result': 'delete method'})
-    # product = Product.query.get(productId)
-    # if product:
-    #     return jsonify({'status': 'OK',
-    #                     'result': product.serialize()})
-    # else:
-    #     return not_found("the product does not exist")
+@user.route('/user/<string:key>/', methods=['DELETE'])
+def delete(key):
+    user = User.objects.filter(id=key).first()
+    if user:
+        user.delete()
+        return jsonify({'status': 'OK'}), 200
+    else:
+        return not_found("the user does not exist")
