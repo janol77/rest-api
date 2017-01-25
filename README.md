@@ -91,24 +91,24 @@ curl --request GET http://<ip>:<port>/api/task/ --header "Content-Type:applicati
 '''
 
 PUT
-'''
+```
 curl --request PUT http://<ip>:<port>/api/task/<objectid>/ --header "Content-Type:application/json" --data '{"title": "cleaner", "description": "clean the clothes"}'
-'''
+```
 
 PATCH
-'''
+```
 curl --request PATCH http://<ip>:<port>/api/task/<objectid>/ --header "Content-Type:application/json" --data '{"title": "cleaner"}'
-'''
+```
 
 POST
-'''
+```
 curl --request POST http://<ip>:<port>/api/task/ --header "Content-Type:application/json" --data '{"title": "cleaner", "description": "clean the clothes"}'
-'''
+```
 
 DELETE
-'''
+```
 curl --request DELETE http://<ip>:<port>/api/task/<objectid>/ --header "Content-Type:application/json"
-'''
+```
 
 ## Running the tests
 
