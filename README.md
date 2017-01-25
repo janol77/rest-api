@@ -85,10 +85,10 @@ server {
 ## Operations 
 
 GET
-'''
+```
 curl --request GET http://<ip>:<port>/api/task/<objectid>/ --header "Content-Type:application/json"
 curl --request GET http://<ip>:<port>/api/task/ --header "Content-Type:application/json"
-'''
+```
 
 PUT
 ```
